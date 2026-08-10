@@ -1,6 +1,7 @@
 import os
 import datetime
 import smtplib
+import re
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
@@ -12,23 +13,40 @@ import pandas as pd
 # ---------------------------------------------------------
 KEYWORDS = [
     '자동차', '조선', '재료', '금속', '배터리', '품질', '자율주행', 
-    '현장실습', '인턴', '공모전', '대외활동', '교육', '부트캠프', '일경험'
+    '현장실습', '인턴', '공모전', '대외활동', '교육', '부트캠프', '일경험',
+    '채용', '모집', '안내', '사업', '과정', '아카데미', 'K-디지털', 'SW'
 ]
 
 # 결과 저장 리스트
 results = []
 
+def clean_text(text):
+    """마크다운 표 깨짐 방지를 위한 텍스트 정제 함수"""
+    if not text:
+        return ""
+    # 파이프(|) 기호를 HTML 엔티티로 변경
+    text = text.replace('|', '&#124;')
+    # 줄바꿈 및 연속 공백 정리
+    text = re.sub(r'[\r\n\t]+', ' ', text)
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
 def add_result(source, title, link, date="-"):
     """키워드 검사 후 결과 리스트에 추가"""
     if not title or not isinstance(title, str):
         return
-    title_clean = title.strip()
+    
+    title_clean = clean_text(title)
+    if len(title_clean) < 3:
+        return
+
+    # 키워드 일치 확인 (단순 포함 여부)
     if any(keyword in title_clean for keyword in KEYWORDS):
         results.append({
-            '출처': source,
+            '출처': clean_text(source),
             '제목': title_clean,
-            '링크': link,
-            '등록일': date
+            '링크': link.strip(),
+            '등록일': clean_text(date)
         })
 
 # ---------------------------------------------------------
@@ -45,10 +63,10 @@ def scrape_kmou():
             title_tag = row.select_one('td.nttInfoSubject a')
             date_tag = row.select_one('td:nth-child(5)')
             if title_tag:
-                title = title_tag.text.strip()
+                title = title_tag.text
                 href = title_tag.get('href', '')
                 link = f"https://www.kmou.ac.kr/kmou/na/ntt/selectNttInfo.do{href}" if href.startswith('?') else url
-                date = date_tag.text.strip() if date_tag else "-"
+                date = date_tag.text if date_tag else "-"
                 add_result('한국해양대 공지', title, link, date)
     except Exception as e:
         print(f"❌ 한국해양대 수집 실패: {e}")
@@ -60,7 +78,7 @@ def scrape_ocean_cts():
         res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         soup = BeautifulSoup(res.text, 'html.parser')
         for a_tag in soup.select('table tbody tr a, .board-list a'):
-            title = a_tag.text.strip()
+            title = a_tag.text
             href = a_tag.get('href', '')
             link = f"https://cts.kmou.ac.kr{href}" if href.startswith('/') else href
             add_result('Ocean-CTS 현장실습', title, link)
@@ -74,9 +92,9 @@ def scrape_ksae():
         res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         soup = BeautifulSoup(res.text, 'html.parser')
         for a in soup.select('a'):
-            title = a.text.strip()
+            title = a.text
             href = a.get('href', '')
-            if len(title) > 5 and ('board' in href or 'notice' in href):
+            if len(title.strip()) > 5:
                 link = f"https://www.ksae.org{href}" if href.startswith('/') else href
                 add_result('한국자동차공학회', title, link)
     except Exception as e:
@@ -85,20 +103,20 @@ def scrape_ksae():
 def scrape_ksoe():
     """4. 한국해양공학회"""
     try:
-        url = "http://www.ksoe.or.kr/"
+        url = "http://www.ksoe.or.kr/bbs/list.php?code=notice"
         res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         soup = BeautifulSoup(res.text, 'html.parser')
         for a in soup.select('a'):
-            title = a.text.strip()
+            title = a.text
             href = a.get('href', '')
-            if len(title) > 5:
-                link = f"http://www.ksoe.or.kr/{href}" if href.startswith('?') else href
+            if len(title.strip()) > 5:
+                link = f"http://www.ksoe.or.kr/{href}" if href.startswith('?') or href.startswith('bbs') else href
                 add_result('한국해양공학회', title, link)
     except Exception as e:
         print(f"❌ 한국해양공학회 수집 실패: {e}")
 
 def scrape_korcham_knda():
-    """5. 대한상공회의소 K-디지털 혁신인재 / 부산인력개발원"""
+    """5. 대한상공회의소 / 부산인력개발원"""
     sites = [
         ('대한상의 K-디지털', 'https://knda.korchamhrd.net/'),
         ('부산인력개발원', 'https://ps.korchamhrd.net/')
@@ -108,18 +126,20 @@ def scrape_korcham_knda():
             res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
             soup = BeautifulSoup(res.text, 'html.parser')
             for a in soup.select('a'):
-                title = a.text.strip()
+                title = a.text
                 href = a.get('href', '')
-                if len(title) > 6:
-                    add_result(name, title, url)
+                if len(title.strip()) > 5:
+                    link = f"{url.rstrip('/')}/{href.lstrip('/')}" if not href.startswith('http') else href
+                    add_result(name, title, link)
         except Exception as e:
             print(f"❌ {name} 수집 실패: {e}")
 
 def scrape_linkareer():
-    """6. 링커리어 (공모전/대외활동 API)"""
+    """6. 링커리어 API"""
     try:
         url = "https://api.linkareer.com/api/v1/activity/list?page=1&perPage=20&sort=CREATED_AT_DESC"
-        res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+        res = requests.get(url, headers=headers, timeout=10)
         if res.status_code == 200:
             data = res.json()
             items = data.get('data', {}).get('activities', {}).get('nodes', [])
@@ -132,55 +152,22 @@ def scrape_linkareer():
         print(f"❌ 링커리어 수집 실패: {e}")
 
 def scrape_winspec():
-    """7. 윈스펙 (직무교육/인턴십)"""
+    """7. 윈스펙"""
     try:
         url = "https://winspec.co.kr/"
         res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         soup = BeautifulSoup(res.text, 'html.parser')
         for a in soup.select('a'):
-            title = a.text.strip()
+            title = a.text
             href = a.get('href', '')
-            if len(title) > 6:
+            if len(title.strip()) > 5:
                 link = f"https://winspec.co.kr{href}" if href.startswith('/') else href
                 add_result('윈스펙', title, link)
     except Exception as e:
         print(f"❌ 윈스펙 수집 실패: {e}")
 
-def scrape_ssgsag():
-    """8. 슥삭 (SSGSAG)"""
-    try:
-        url = "https://www.ssgsag.kr/"
-        res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
-        soup = BeautifulSoup(res.text, 'html.parser')
-        for a in soup.select('a'):
-            title = a.text.strip()
-            href = a.get('href', '')
-            if len(title) > 5:
-                link = f"https://www.ssgsag.kr{href}" if href.startswith('/') else href
-                add_result('슥삭', title, link)
-    except Exception as e:
-        print(f"❌ 슥삭 수집 실패: {e}")
-
-def scrape_work24():
-    """9. 고용24 / 청년일경험 / K-뉴딜 아카데미"""
-    urls = [
-        ('고용24', 'https://www.work24.go.kr/cm/main.do'),
-        ('미래내일 일경험', 'https://yw.work24.go.kr/main.do'),
-        ('K-뉴딜 아카데미', 'https://moelyouth.work24.go.kr/')
-    ]
-    for name, url in urls:
-        try:
-            res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
-            soup = BeautifulSoup(res.text, 'html.parser')
-            for a in soup.select('a'):
-                title = a.text.strip()
-                if len(title) > 6:
-                    add_result(name, title, url)
-        except Exception as e:
-            print(f"❌ {name} 수집 실패: {e}")
-
 def scrape_hyundai_programs():
-    """10. 현대자동차 Here we go / H-Mobility Class"""
+    """8. 현대자동차 모빌리티 공고"""
     programs = [
         ('현대차 Here We Go', 'https://hwgo.applyin.co.kr/'),
         ('현대차 H-Mobility Class', 'https://h-mobility-class.com/')
@@ -190,42 +177,12 @@ def scrape_hyundai_programs():
             res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
             soup = BeautifulSoup(res.text, 'html.parser')
             text = soup.get_text()
-            # 주요 모빌리티 키워드 포함 여부 직접 확인
-            for kw in ['수강생', '모집', '차량', '자율주행', '전동화', '배터리', '공고']:
+            for kw in ['수강생', '모집', '차량', '자율주행', '전동화', '배터리', '공고', '인턴']:
                 if kw in text:
-                    add_result(name, f"[{name}] 신규 모집/공지사항 업데이트 확인 필요", url)
+                    add_result(name, f"[{name}] 모집 및 프로그램 안내 확인하기", url)
                     break
         except Exception as e:
             print(f"❌ {name} 수집 실패: {e}")
-
-def scrape_job_platforms():
-    """11. 잡코리아, 인크루트, 캐치, 자소설닷컴, 잡플래닛, 코멘토, 아이캠펑, 캠퍼스픽, 코드잇"""
-    platforms = [
-        ('잡코리아', 'https://www.jobkorea.co.kr/'),
-        ('인크루트', 'https://www.incruit.com/'),
-        ('캐치', 'https://www.catch.co.kr/'),
-        ('자소설닷컴', 'https://jasoseol.com/'),
-        ('잡플래닛', 'https://www.jobplanet.co.kr/'),
-        ('코멘토', 'https://comento.kr/'),
-        ('아이캠펑', 'http://www.campung.com/'),
-        ('캠퍼스픽', 'https://www.campuspick.com/'),
-        ('코드잇 스프린트', 'https://sprint.codeit.kr/')
-    ]
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    }
-    for name, url in platforms:
-        try:
-            res = requests.get(url, headers=headers, timeout=8)
-            soup = BeautifulSoup(res.text, 'html.parser')
-            for a in soup.select('a'):
-                title = a.text.strip()
-                href = a.get('href', '')
-                if len(title) > 5 and any(k in title for k in KEYWORDS):
-                    link = href if href.startswith('http') else f"{url.rstrip('/')}/{href.lstrip('/')}"
-                    add_result(name, title, link)
-        except Exception as e:
-            print(f"⚠️ {name} 보안 차단 또는 접속 제한 (크롤링 방지 적용됨)")
 
 # ---------------------------------------------------------
 # [메일 발송 모듈]
@@ -272,10 +229,7 @@ if __name__ == "__main__":
     scrape_korcham_knda()
     scrape_linkareer()
     scrape_winspec()
-    scrape_ssgsag()
-    scrape_work24()
     scrape_hyundai_programs()
-    scrape_job_platforms()
 
     today = datetime.date.today().strftime('%Y년 %m월 %d일')
     
@@ -283,8 +237,13 @@ if __name__ == "__main__":
         df = pd.DataFrame(results).drop_duplicates(subset=['제목']).reset_index(drop=True)
         df.to_csv('latest_jobs.csv', index=False, encoding='utf-8-sig')
         
-        md_text = f"# 🚗⚓ 오늘의 자동차·조선·재료 공고 ({today})\n\n| 출처 | 제목 | 링크 | 등록일 |\n| :--- | :--- | :--- | :--- |\n"
-        html_text = f"<h2>📢 오늘의 관심 공고 목록 ({today}) - 총 {len(df)}건</h2><table border='1' style='border-collapse: collapse; padding: 8px;'><tr bgcolor='#f2f2f2'><th>출처</th><th>제목</th><th>등록일</th></tr>"
+        # README 마크다운 작성 (줄바꿈 엄격 적용)
+        md_text = f"# 🚗⚓ 오늘의 자동차·조선·재료 공고 ({today})\n\n"
+        md_text += "| 출처 | 제목 | 링크 | 등록일 |\n"
+        md_text += "| :--- | :--- | :--- | :--- |\n"
+        
+        html_text = f"<h2>📢 오늘의 관심 공고 목록 ({today}) - 총 {len(df)}건</h2>"
+        html_text += "<table border='1' style='border-collapse: collapse; padding: 8px;'><tr bgcolor='#f2f2f2'><th>출처</th><th>제목</th><th>등록일</th></tr>"
         
         for _, row in df.iterrows():
             md_text += f"| {row['출처']} | {row['제목']} | [바로가기]({row['링크']}) | {row['등록일']} |\n"
@@ -296,7 +255,8 @@ if __name__ == "__main__":
             f.write(md_text)
             
         send_naver_email(html_text, len(df))
+        print(f"✅ 총 {len(df)}건의 공고 수집 및 업데이트 성공!")
     else:
         print("조건에 알맞은 신규 공고가 없습니다. 안내 메일을 전송합니다.")
-        html_text = f"<h2>📢 {today} 통합 스크래퍼 실행 결과</h2><p>오늘 설정한 키워드(자동차, 조선, 재료, 현장실습, 인턴 등)에 부합하는 신규 공고가 발견되지 않았습니다.</p>"
+        html_text = f"<h2>📢 {today} 통합 스크래퍼 실행 결과</h2><p>오늘 설정한 키워드에 부합하는 신규 공고가 발견되지 않았습니다.</p>"
         send_naver_email(html_text, 0)
