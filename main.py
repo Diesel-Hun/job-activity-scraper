@@ -2,19 +2,28 @@ import os
 import datetime
 import smtplib
 import re
+import urllib3
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
+# SSL 경고 메시지 비활성화 (일부 공학회/대학 사이트 SSL 에러 방지)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 # ---------------------------------------------------------
-# [설정] 수집 대상 키워드 목록
+# [설정] 수집 대상 최적화 키워드 목록
 # ---------------------------------------------------------
 KEYWORDS = [
-    '자동차', '조선', '재료', '금속', '배터리', '품질', '자율주행', 
-    '현장실습', '인턴', '공모전', '대외활동', '교육', '부트캠프', '일경험',
-    '채용', '모집', '안내', '사업', '과정', '아카데미', 'K-디지털', 'SW'
+    # 직무
+    '부품구매', '구매', 'PM', '생산관리', '생산기술', '품질', '품질관리', '품질보증',
+    '설계', '차량설계', 'R&D', '연구개발',
+    # 도메인/전공
+    '자동차', '조선', '배터리', '자율주행', 'HW', '하드웨어', '재료', '금속', '재료공학', '신소재',
+    # 채용 형태/조건
+    '인턴', '현장실습', '채용연계형', '일경험', '부트캠프', '우대', '공모전', '우대사항', '신입'
+]
 ]
 
 results = []
@@ -48,7 +57,7 @@ def add_result(source, title, link, date="-"):
         })
 
 # ---------------------------------------------------------
-# 1. 링커리어 (Linkareer)
+# 기존 사이트 (1~9)
 # ---------------------------------------------------------
 def scrape_linkareer():
     try:
@@ -58,17 +67,11 @@ def scrape_linkareer():
             data = res.json()
             items = data.get('data', {}).get('activities', {}).get('nodes', [])
             for item in items:
-                title = item.get('title', '')
-                act_id = item.get('id', '')
-                link = f"https://linkareer.com/activity/{act_id}"
-                add_result('링커리어', title, link)
-            print(f"✅ 링커리어 수집 진행 완료 (검색된 항목 수: {len(items)})")
+                add_result('링커리어', item.get('title', ''), f"https://linkareer.com/activity/{item.get('id', '')}")
+            print(f"✅ 링커리어 수집 완료 (항목 수: {len(items)})")
     except Exception as e:
         print(f"❌ 링커리어 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 2. 자소설닷컴 (Jasoseol)
-# ---------------------------------------------------------
 def scrape_jasoseol():
     try:
         url = "https://jasoseol.com/api/v1/employment/list"
@@ -81,23 +84,14 @@ def scrape_jasoseol():
             for item in employments:
                 company = item.get('company_name', '')
                 title = item.get('title', '')
-                emp_id = item.get('id', '')
-                
                 full_title = f"[{company}] {title}" if company else title
-                link = f"https://jasoseol.com/recruit/{emp_id}"
-                
-                end_date = item.get('end_date', '-')
-                if end_date and len(str(end_date)) >= 10:
-                    end_date = str(end_date)[:10]
-                    
+                link = f"https://jasoseol.com/recruit/{item.get('id', '')}"
+                end_date = str(item.get('end_date', '-'))[:10] if item.get('end_date') else '-'
                 add_result('자소설닷컴', full_title, link, end_date)
-            print(f"✅ 자소설닷컴 수집 진행 완료 (검색된 항목 수: {len(employments)})")
+            print(f"✅ 자소설닷컴 수집 완료 (항목 수: {len(employments)})")
     except Exception as e:
         print(f"❌ 자소설닷컴 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 3. 인크루트 (Incruit)
-# ---------------------------------------------------------
 def scrape_incruit():
     try:
         count = 0
@@ -110,19 +104,15 @@ def scrape_incruit():
                 for item in items:
                     title_tag = item.select_one('a.title') or item.select_one('span.cell_mid a')
                     if title_tag:
-                        title = title_tag.text.strip()
                         link = title_tag.get('href', '')
                         if not link.startswith('http'):
                             link = 'https:' + link if link.startswith('//') else 'https://job.incruit.com' + link
-                        add_result('인크루트', title, link)
+                        add_result('인크루트', title_tag.text.strip(), link)
                         count += 1
-        print(f"✅ 인크루트 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 인크루트 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 인크루트 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 4. 캐치 (Catch)
-# ---------------------------------------------------------
 def scrape_catch():
     try:
         url = "https://www.catch.co.kr/api/v1/recruit/list?page=1&pageSize=30"
@@ -134,56 +124,30 @@ def scrape_catch():
             for item in items:
                 company = item.get('CompName', '') or item.get('companyName', '')
                 title = item.get('Title', '') or item.get('title', '')
-                rec_id = item.get('RecruitIdx', '') or item.get('recruitIdx', '')
                 full_title = f"[{company}] {title}" if company else title
-                link = f"https://www.catch.co.kr/NCS/RecruitInfoDetail/{rec_id}"
+                link = f"https://www.catch.co.kr/NCS/RecruitInfoDetail/{item.get('RecruitIdx', '')}"
                 add_result('캐치', full_title, link)
                 count += 1
-        else:
-            # HTML 파싱 폴백
-            fallback_url = "https://www.catch.co.kr/NCS/Recruit"
-            res = requests.get(fallback_url, headers=HEADERS, timeout=10)
-            if res.status_code == 200:
-                soup = BeautifulSoup(res.text, 'html.parser')
-                items = soup.select('table.tbl_type1 tbody tr')
-                for item in items:
-                    title_tag = item.select_one('td.al a')
-                    if title_tag:
-                        title = title_tag.text.strip()
-                        link = "https://www.catch.co.kr" + title_tag.get('href', '')
-                        add_result('캐치', title, link)
-                        count += 1
-        print(f"✅ 캐치 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 캐치 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 캐치 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 5. 독취사 (네이버 카페)
-# ---------------------------------------------------------
 def scrape_dokchisa():
     try:
-        # 독취사 카페 주요 공고/게시판 iframe URL
-        club_id = "10986348"
-        url = f"https://cafe.naver.com/ArticleList.nhn?search.clubid={club_id}&search.boardtype=L&search.totalCount=30&search.page=1"
+        url = "https://cafe.naver.com/ArticleList.nhn?search.clubid=10986348&search.boardtype=L&search.totalCount=30&search.page=1"
         res = requests.get(url, headers=HEADERS, timeout=10)
         count = 0
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, 'html.parser')
-            articles = soup.select('div.article-board tr, table.board-box tr')
-            for article in articles:
+            for article in soup.select('div.article-board tr, table.board-box tr'):
                 title_tag = article.select_one('a.article') or article.select_one('a.club')
                 if title_tag:
-                    title = title_tag.text.strip()
-                    link = "https://cafe.naver.com" + title_tag.get('href', '')
-                    add_result('독취사', title, link)
+                    add_result('독취사', title_tag.text.strip(), "https://cafe.naver.com" + title_tag.get('href', ''))
                     count += 1
-        print(f"✅ 독취사 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 독취사 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 독취사 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 6. 아이캠펑 (Campung)
-# ---------------------------------------------------------
 def scrape_campung():
     try:
         url = "http://www.campung.com/board/list.asp?b_id=recruit"
@@ -191,22 +155,17 @@ def scrape_campung():
         count = 0
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, 'html.parser')
-            items = soup.select('table.board_list tr') or soup.select('.list_box li')
-            for item in items:
+            for item in soup.select('table.board_list tr') or soup.select('.list_box li'):
                 title_tag = item.select_one('a')
                 if title_tag:
-                    title = title_tag.text.strip()
                     href = title_tag.get('href', '')
                     link = f"http://www.campung.com/board/{href}" if not href.startswith('http') else href
-                    add_result('아이캠펑', title, link)
+                    add_result('아이캠펑', title_tag.text.strip(), link)
                     count += 1
-        print(f"✅ 아이캠펑 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 아이캠펑 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 아이캠펑 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 7. 슥삭 (SSGSAG)
-# ---------------------------------------------------------
 def scrape_ssgsag():
     try:
         url = "https://api.ssgsag.kr/v1/feed/activities?page=1&size=30"
@@ -216,18 +175,12 @@ def scrape_ssgsag():
             data = res.json()
             items = data.get('content', []) or data.get('activities', []) or []
             for item in items:
-                title = item.get('title', '')
-                act_id = item.get('id', '')
-                link = f"https://www.ssgsag.kr/activity/{act_id}"
-                add_result('슥삭', title, link)
+                add_result('슥삭', item.get('title', ''), f"https://www.ssgsag.kr/activity/{item.get('id', '')}")
                 count += 1
-        print(f"✅ 슥삭 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 슥삭 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 슥삭 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 8. 캠퍼스픽 (Campuspick)
-# ---------------------------------------------------------
 def scrape_campuspick():
     try:
         url = "https://api.campuspick.com/v1/activity/list?page=1"
@@ -237,40 +190,279 @@ def scrape_campuspick():
             data = res.json()
             items = data.get('list', []) or data.get('activities', []) or []
             for item in items:
-                title = item.get('title', '') or item.get('name', '')
-                act_id = item.get('id', '')
-                link = f"https://www.campuspick.com/activity/view?id={act_id}"
-                add_result('캠퍼스픽', title, link)
+                add_result('캠퍼스픽', item.get('title', '') or item.get('name', ''), f"https://www.campuspick.com/activity/view?id={item.get('id', '')}")
                 count += 1
-        print(f"✅ 캠퍼스픽 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 캠퍼스픽 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 캠퍼스픽 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 9. 잡플래닛 (Jobplanet)
-# ---------------------------------------------------------
 def scrape_jobplanet():
     try:
         url = "https://www.jobplanet.co.kr/job/search?q=%ED%92%88%EC%A7%88"
-        headers = HEADERS.copy()
-        headers['Accept-Language'] = 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-        res = requests.get(url, headers=headers, timeout=10)
+        res = requests.get(url, headers=HEADERS, timeout=10)
         count = 0
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, 'html.parser')
-            items = soup.select('div.item_card') or soup.select('a.card_link')
-            for item in items:
+            for item in soup.select('div.item_card') or soup.select('a.card_link'):
                 title_tag = item.select_one('dt.title') or item.select_one('.jp_title')
                 if title_tag:
-                    title = title_tag.text.strip()
                     link = item.get('href', '') if item.name == 'a' else item.select_one('a').get('href', '')
                     if link and not link.startswith('http'):
                         link = "https://www.jobplanet.co.kr" + link
-                    add_result('잡플래닛', title, link)
+                    add_result('잡플래닛', title_tag.text.strip(), link)
                     count += 1
-        print(f"✅ 잡플래닛 수집 진행 완료 (검색된 항목 수: {count})")
+        print(f"✅ 잡플래닛 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 잡플래닛 수집 실패: {e}")
+
+# ---------------------------------------------------------
+# 새로 추가된 사이트 (10~23)
+# ---------------------------------------------------------
+
+# 10. 미래내일일경험 (고용노동부)
+def scrape_yw_work24():
+    try:
+        url = "https://yw.work24.go.kr/main.do"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('.board_list tr, .program_list li, a'):
+                text = item.text.strip()
+                href = item.get('href', '') if item.name == 'a' else (item.select_one('a').get('href', '') if item.select_one('a') else '')
+                if href and len(text) > 5:
+                    link = "https://yw.work24.go.kr" + href if href.startswith('/') else href
+                    add_result('미래내일일경험', text, link)
+                    count += 1
+        print(f"✅ 미래내일일경험 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 미래내일일경험 수집 실패: {e}")
+
+# 11. 현대자동차 Here we go
+def scrape_hyundai_hwgo():
+    try:
+        url = "https://hwgo.applyin.co.kr/"
+        res = requests.get(url, headers=HEADERS, timeout=10)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a, .notice_item'):
+                text = item.text.strip()
+                if len(text) > 5:
+                    add_result('현대차 HereWeGo', text, url)
+                    count += 1
+        print(f"✅ 현대차 HereWeGo 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 현대차 HereWeGo 수집 실패: {e}")
+
+# 12. 현대자동차 H-mobility Class
+def scrape_hmobility():
+    try:
+        url = "https://h-mobility-class.com/"
+        res = requests.get(url, headers=HEADERS, timeout=10)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a, .notice-item, .main-banner'):
+                text = item.text.strip()
+                if len(text) > 5:
+                    add_result('현대차 H-mobility', text, url)
+                    count += 1
+        print(f"✅ 현대차 H-mobility 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 현대차 H-mobility 수집 실패: {e}")
+
+# 13. 한국해양대학교 OCEAN-CTS 공지 & 현장실습
+def scrape_kmou_cts():
+    try:
+        # CTS 현장실습 게시판
+        url = "https://cts.kmou.ac.kr/ko/jobs/snotice"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('table tr, .board_list li'):
+                title_tag = item.select_one('a')
+                date_tag = item.select_one('.date') or item.select_one('td.date')
+                if title_tag:
+                    title = title_tag.text.strip()
+                    href = title_tag.get('href', '')
+                    link = "https://cts.kmou.ac.kr" + href if href.startswith('/') else href
+                    date = date_tag.text.strip() if date_tag else "-"
+                    add_result('OCEAN-CTS(현장실습)', title, link, date)
+                    count += 1
+        print(f"✅ OCEAN-CTS 현장실습 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ OCEAN-CTS 현장실습 수집 실패: {e}")
+
+# 14. 한국해양대학교 대표 공지사항
+def scrape_kmou_main():
+    try:
+        url = "https://www.kmou.ac.kr/kmou/na/ntt/selectNttList.do?mi=2032&bbsId=10373"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('table.board-list tr, ul.board-list li'):
+                title_tag = item.select_one('a') or item.select_one('.ntt-title')
+                date_tag = item.select_one('td.date') or item.select_one('.date')
+                if title_tag:
+                    title = title_tag.text.strip()
+                    href = title_tag.get('href', '')
+                    link = "https://www.kmou.ac.kr/kmou/na/ntt/" + href if not href.startswith('http') else href
+                    date = date_tag.text.strip() if date_tag else "-"
+                    add_result('한국해양대 공지', title, link, date)
+                    count += 1
+        print(f"✅ 한국해양대 공지사항 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 한국해양대 공지사항 수집 실패: {e}")
+
+# 15. 한국자동차공학회 (KSAE)
+def scrape_ksae():
+    try:
+        url = "https://www.ksae.org/index.php"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('.notice_list li, .main_notice a, table.board tr'):
+                text = item.text.strip()
+                href = item.get('href', '') if item.name == 'a' else (item.select_one('a').get('href', '') if item.select_one('a') else '')
+                if href and len(text) > 5:
+                    link = "https://www.ksae.org/" + href if href.startswith('/') else href
+                    add_result('한국자동차공학회', text, link)
+                    count += 1
+        print(f"✅ 한국자동차공학회 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 한국자동차공학회 수집 실패: {e}")
+
+# 16. 한국해양공학회 (KSOE)
+def scrape_ksoe():
+    try:
+        url = "http://www.ksoe.or.kr/"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a, .notice li'):
+                text = item.text.strip()
+                href = item.get('href', '') if item.name == 'a' else ''
+                if href and len(text) > 5:
+                    link = "http://www.ksoe.or.kr/" + href if href.startswith('/') else href
+                    add_result('한국해양공학회', text, link)
+                    count += 1
+        print(f"✅ 한국해양공학회 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 한국해양공학회 수집 실패: {e}")
+
+# 17. 고용24 & K-뉴딜 아카데미
+def scrape_work24():
+    try:
+        url = "https://moelyouth.work24.go.kr/"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('고용24/청년', text, "https://moelyouth.work24.go.kr" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 고용24/K-뉴딜 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 고용24/K-뉴딜 수집 실패: {e}")
+
+# 18. 대한상공회의소 K-디지털
+def scrape_korcham_knda():
+    try:
+        url = "https://knda.korchamhrd.net/"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('대한상의 K-디지털', text, "https://knda.korchamhrd.net" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 대한상의 K-디지털 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 대한상의 K-디지털 수집 실패: {e}")
+
+# 19. 부산인력개발원
+def scrape_ps_korcham():
+    try:
+        url = "https://ps.korchamhrd.net/"
+        res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('부산인력개발원', text, "https://ps.korchamhrd.net" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 부산인력개발원 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 부산인력개발원 수집 실패: {e}")
+
+# 20. 윈스펙 (Winspec)
+def scrape_winspec():
+    try:
+        url = "https://winspec.co.kr/"
+        res = requests.get(url, headers=HEADERS, timeout=10)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('윈스펙', text, "https://winspec.co.kr" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 윈스펙 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 윈스펙 수집 실패: {e}")
+
+# 21. 코멘토 (Comento)
+def scrape_comento():
+    try:
+        url = "https://comento.kr/job-questions"
+        res = requests.get(url, headers=HEADERS, timeout=10)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('코멘토', text, "https://comento.kr" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 코멘토 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 코멘토 수집 실패: {e}")
+
+# 22. 코드잇 스프린트
+def scrape_codeit_sprint():
+    try:
+        url = "https://sprint.codeit.kr/"
+        res = requests.get(url, headers=HEADERS, timeout=10)
+        count = 0
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.text, 'html.parser')
+            for item in soup.select('a'):
+                text = item.text.strip()
+                href = item.get('href', '')
+                if href and len(text) > 5:
+                    add_result('코드잇스프린트', text, "https://sprint.codeit.kr" + href if href.startswith('/') else href)
+                    count += 1
+        print(f"✅ 코드잇스프린트 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 코드잇스프린트 수집 실패: {e}")
+
 
 # ---------------------------------------------------------
 # [네이버 메일 발송]
@@ -287,7 +479,7 @@ def send_naver_email(html_content, total_count):
     receiver_email = sender_email
 
     today_str = datetime.date.today().strftime("%Y-%m-%d")
-    subject = f"[맞춤 공고 알림] {today_str} 주요 채용 및 대외활동 공고 ({total_count}건)"
+    subject = f"[맞춤 공고 알림] {today_str} 통합 공고/지원사업 리스트 ({total_count}건)"
 
     msg = MIMEMultipart('alternative')
     msg['From'] = sender_email
@@ -307,9 +499,9 @@ def send_naver_email(html_content, total_count):
 # [메인 실행부]
 # ---------------------------------------------------------
 if __name__ == "__main__":
-    print("🚀 주요 사이트 공고 통합 스크래핑을 시작합니다...")
+    print("🚀 전체 수집 대상 사이트 스크래핑을 시작합니다...")
     
-    # 총 9개 사이트 스크래퍼 실행
+    # 1차 채용 사이트
     scrape_linkareer()
     scrape_jasoseol()
     scrape_incruit()
@@ -320,17 +512,32 @@ if __name__ == "__main__":
     scrape_campuspick()
     scrape_jobplanet()
 
+    # 2차 추가 사이트 (대학, 현대차, 공학회, 지원사업)
+    scrape_yw_work24()
+    scrape_hyundai_hwgo()
+    scrape_hmobility()
+    scrape_kmou_cts()
+    scrape_kmou_main()
+    scrape_ksae()
+    scrape_ksoe()
+    scrape_work24()
+    scrape_korcham_knda()
+    scrape_ps_korcham()
+    scrape_winspec()
+    scrape_comento()
+    scrape_codeit_sprint()
+
     today = datetime.date.today().strftime('%Y년 %m월 %d일')
     
     if results:
         df = pd.DataFrame(results).drop_duplicates(subset=['제목']).reset_index(drop=True)
         df.to_csv('latest_jobs.csv', index=False, encoding='utf-8-sig')
         
-        md_text = f"# 📢 오늘의 주요 관심 공고 ({today})\n\n"
+        md_text = f"# 📢 오늘의 맞춤 관심 공고 ({today})\n\n"
         md_text += "| 출처 | 제목 | 링크 | 마감/등록일 |\n"
         md_text += "| :--- | :--- | :--- | :--- |\n"
         
-        html_text = f"<h2>📢 오늘의 관심 공고 목록 ({today}) - 총 {len(df)}건</h2>"
+        html_text = f"<h2>📢 오늘의 맞춤 관심 공고 목록 ({today}) - 총 {len(df)}건</h2>"
         html_text += "<table border='1' style='border-collapse: collapse; padding: 8px;'><tr bgcolor='#f2f2f2'><th>출처</th><th>제목</th><th>마감/등록일</th></tr>"
         
         for _, row in df.iterrows():
