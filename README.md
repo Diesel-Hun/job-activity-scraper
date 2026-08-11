@@ -1,3 +1,50 @@
-# 📢 오늘의 주요 공고 (2026년 08월 11일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 08월 11일)
 
-오늘 조건에 알맞은 공고가 없습니다.
+| 출처 | 제목 | 링크 | 마감/등록일 |
+| :--- | :--- | :--- | :--- |
+| 미래내일일경험 | 청년 일경험 포털 | [바로가기](https://yw.work24.go.kr/main.do) | - |
+| 미래내일일경험 | 청년일경험 포털 | [바로가기](javascript:fn_header_menuMove('MXH0000004');) | - |
+| 미래내일일경험 | 고용노동부 청년일경험 | [바로가기](javascript:fn_header_menuMove('MXH0000136');) | - |
+| 미래내일일경험 | 주관기관별 일경험 사업 | [바로가기](javascript:fn_header_menuMove('MXH0000005');) | - |
+| 미래내일일경험 | 일경험 프로그램 | [바로가기](javascript:void(0);) | - |
+| 미래내일일경험 | 인턴형 우수사례 | [바로가기](javascript:fn_header_menuMove('MXH0000125');) | - |
+| 미래내일일경험 | 우수사례 공모전 | [바로가기](javascript:fn_header_menuMove('MXH0000142');) | - |
+| 미래내일일경험 | 일경험 프로그램 더보기 바로가기 | [바로가기](#btn-more-prgm) | - |
+| 미래내일일경험 | 주관기관별 일경험 더보기 바로가기 | [바로가기](#btn-more-biz) | - |
+| 미래내일일경험 | 2026년 한국산림복지진흥원 2026년 체험형 청년인턴 34세 이하 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('220')) | - |
+| 미래내일일경험 | 2026년 광주광역시청 광주청년 일경험드림 사업 광주거주 19~39세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('186')) | - |
+| 미래내일일경험 | 2026년 대전교통공사 청년 체험형 인턴 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('192')) | - |
+| 미래내일일경험 | 2026년 한국해양조사협회 체험형 청년인턴 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('248')) | - |
+| 미래내일일경험 | 2026년 코레일관광개발 체험형 청년인턴 만 15세 ~ 만 34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('237')) | - |
+| 미래내일일경험 | 주관기관별 일경험 정보더보기 | [바로가기](https://yw.work24.go.kr/c/b/selectWkexBizList.do) | - |
+| 미래내일일경험 | 소상공인시장진흥공단 기타 인문 및 사회과학 연구개발업 | [바로가기](javascript:void(0);) | - |
+| 미래내일일경험 | 효림산업（주） 그 외 자동차용 신품 부품 제조업 | [바로가기](javascript:void(0);) | - |
+| 미래내일일경험 | 취준은 실전, 시작은 일경험부터 자세히보기 | [바로가기](https://youtu.be/xIAIw0MK2pI?si=voC00ifO6phCSEP8) | - |
+| 미래내일일경험 | 미래내일일경험으로 연결된 내일 - [청년편] 청년이 만난 기회 자세히보기 | [바로가기](https://youtu.be/rcvQvGf_SfQ?si=-Ki_HdfHYvEh72HD) | - |
+| 미래내일일경험 | 미래내일일경험으로 연결된 내일 - [기업편] 기업이 만난 변화 자세히보기 | [바로가기](https://youtu.be/i_WPKcBIFKo?si=Fno4crdZC8xhj_zK) | - |
+| 미래내일일경험 | [틈만나면] 취업을 위한 진짜 스펙! 미래내일일경험 자세히보기 | [바로가기](https://youtube.com/shorts/-jPLfDscfJ0?si=GY9yn773lpiWHn8w) | - |
+| 미래내일일경험 | 면접왕 이형이 직접 직무교육을 하고 인턴십에 넣어준다면?? 자세히보기 | [바로가기](https://youtu.be/CgdkE9P26vc?si=zPuzbsuYsGHnTre9) | - |
+| 미래내일일경험 | MZ 아이콘 엄지윤! 고용노동부 인턴쉽 어서오고~! 자세히보기 | [바로가기](https://youtu.be/vSmhSxrjKYA?si=9ACVxrYwMhHVe6Xf) | - |
+| 미래내일일경험 | 엄지님도 추천하는 고용노동부 '미래내일 일경험'! 자세히보기 | [바로가기](https://youtu.be/9nSHNhkBazU?si=GIZtOzOuRKv4FMIh) | - |
+| 미래내일일경험 | 청년을 위한 투자! 미래내일 일경험 자세히보기 | [바로가기](https://youtu.be/7n5yORMwL38?si=mbBoDf4DUmdQeIeE) | - |
+| 미래내일일경험 | [청년] [공지]청년일경험 대민포털 시스템 작업 안내(26.5.12) 2026-05-12 | [바로가기](javascript:fn_noticeSearchDetail('83537')) | - |
+| 미래내일일경험 | (인턴형) 인턴형에 참여하면 체류지원비도 지원받을 수 있다고 하는데, 지급 기준은 어떻게 되나요? 2026-06-04 | [바로가기](javascript:fn_searchFaqDetail('151')) | - |
+| 미래내일일경험 | (인턴형) 참여기업은 참여자 선발 과정에 참여할 수 있나요? 2026-06-04 | [바로가기](javascript:fn_searchFaqDetail('152')) | - |
+| 미래내일일경험 | (인턴형/프로젝트형) 일경험 참여하기 전에 이수해야 하는 교육이 있나요? 2026-05-28 | [바로가기](javascript:fn_searchFaqDetail('150')) | - |
+| 현대차 H-mobility | 현대자동차 채용홈페이지 | [바로가기](https://h-mobility-class.com/) | - |
+| 한국해양공학회 | [관련소식] [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
+| 한국해양공학회 | '소형모듈원자로(SMR) 선박 개발’지지 원자력-조선·해양 관련 학회 공동 선언 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=942) | - |
+| 한국해양공학회 | [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
+| 한국해양공학회 | 황재혁 부산조선해양기자재공업협동조합 전무이사 승진 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=169) | - |
+| 한국해양공학회 | [결혼] 조선대학교 권영섭 명예교수 자제 결혼 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=167) | - |
+| 고용24/청년 | 청년도약 인재양성 부트캠프 바로가기 | [바로가기](http://www.nais.or.kr) | - |
+| 고용24/청년 | 콘텐츠 분야 우수인재 연계 기업인턴십 바로가기 | [바로가기](https://www.kocca.kr/kocca/bbs/view/B0000137/2011882.do?menuNo=204802&categorys=0) | - |
+| 고용24/청년 | 미래내일 일경험 바로가기 | [바로가기](https://yw.work24.go.kr/main.do) | - |
+| 부산인력개발원 | 산재근로자과정/청년일경험사업 | [바로가기](javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5549&cms_id=injured_worker','5427','5427','_self');) | - |
+| 부산인력개발원 | 청년일경험(ESG) | [바로가기](javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5551&cms_id=work_experience','5427','5429','_self');) | - |
+| 부산인력개발원 | 부산 [입찰공지] (재공고) 훈련장비(자율이동로봇) 구매 2025-07-17 | [바로가기](javascript:funcGoBbsDetail('21','224019','21','rootMenuId=3166&menuId=3167');) | - |
+| 코멘토 | 직무부트캠프 | [바로가기](https://comento.kr/edu) | - |
+| 코드잇스프린트 | 30대 개발자 신입 취업, 현실적으로 가능할까요?개발자 취업, 궁금한 건 무엇이든 물어보세요. 코드잇 백엔드 개발자 Danny가 답해드립니다! | [바로가기](https://sprint.codeit.kr/blog/human-account-30s-developer-job-possibility) | - |
+| 코드잇스프린트 | 신입 백엔드 취업에 대한 논쟁들, 진짜일까 소문일까?신입 백엔드 개발자 취업, 뭐가 가장 중요할까? 코드잇 테크리드 태순, 백엔드 개발자 대니, 교육PM 루시가 신입 개발자 취업의 진짜 기준을 솔직하게 토론합니다. | [바로가기](https://sprint.codeit.kr/blog/new-backend-developer-employment-debates) | - |
+| 코드잇스프린트 | 코드잇 스프린트 부트캠프 솔직 후기 모음.ZIP스프린트를 실제로 수강중인 ‘스프린터’분들께서 직접 개인 블로그에 작성해주신 후기들을 모아왔습니다. | [바로가기](https://sprint.codeit.kr/blog/%EC%86%94%EC%A7%81%ED%9B%84%EA%B8%B0-%EC%BD%94%EB%93%9C%EC%9E%87-%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84-%EC%8B%A4%EC%A0%9C-%EC%88%98%EA%B0%95%EC%83%9D-%ED%9B%84%EA%B8%B0-%EB%AA%A8%EC%9D%8C) | - |
+| 코드잇스프린트 | 인턴십 기회 무한 매칭 코드잇 스퍼트 인턴십 후기.ZIP수료 후에도 이어지는 인턴십 무한 매칭의 기회! 코드잇 스프린트 인턴십 프로그램 참여 후기를 알려드려요. | [바로가기](https://sprint.codeit.kr/blog/%EC%9D%B8%ED%84%B4%EC%8B%AD-%EA%B8%B0%ED%9A%8C-%EB%AC%B4%ED%95%9C-%EB%A7%A4%EC%B9%AD-%EC%BD%94%EB%93%9C%EC%9E%87-%EC%8A%A4%ED%8D%BC%ED%8A%B8-%EC%9D%B8%ED%84%B4%EC%8B%AD-%ED%9B%84%EA%B8%B0zip) | - |
