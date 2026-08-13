@@ -16,11 +16,27 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # [설정] 수집 대상 최적화 키워드 목록
 # ---------------------------------------------------------
 KEYWORDS = [
+    # --- [기업 키워드] ---
+    # 1. 자동차 계열 (완성차, 계열사 및 주요 1차 벤더)
+    '현대자동차', '현대차', '기아', '현대모비스', '모비스', '현대위아', '현대트랜시스', 
+    '현대케피코', '현대오토에버', 'HL만도', '만도', '한온시스템', '에스엘', 'SL', 
+    '서연이화', '화신', '성우하이텍', 'CTR', '센트랄', '유라코퍼레이션', '경방신약', 
+    '계양전기', '동희', '아신', '코라오', '세방전지', 'DAS', '다스', 'KGM', 'GM',
+    '테슬라코리아', '테슬라', '르노자동차', '폭스바겐'
+
+    # 2. HD현대 및 주요 조선/해양 기업
+    'HD현대', 'HD현대중공업', 'HD한국조선해양', 'HD현대미포', 'HD현대삼호', 
+    'HD현대마린솔루션', 'HD현대일렉트릭', '삼성중공업', '한화오션', '대한조선', 
+    '케이조선', 'HJ중공업', '강덕', '선광',
+
+    # --- [직무/기술/분야 키워드] ---
     # 직무
-    '부품구매', '구매', 'PM', '생산관리', '생산기술', '품질', '품질관리', '품질보증',
-    '설계', '차량설계', 'R&D', '연구개발',
+    '부품구매', '부품개발', '구매', 'PM', '생산관리', '생산기술', '품질', '품질관리', '품질보증',
+    '설계', '차량설계', 'R&D', '연구개발', '생산', '제조',
+    
     # 도메인/전공
-    '자동차', '조선', '배터리', '자율주행', 'HW', '하드웨어', '재료', '금속', '재료공학', '신소재',
+    '자동차', '조선', '해양', '배터리', '자율주행', 'HW', '하드웨어', '재료', '금속', '재료공학', '신소재', '선박',
+    
     # 채용 형태/조건
     '인턴', '현장실습', '채용연계형', '일경험', '부트캠프', '우대', '공모전', '우대사항', '신입'
 ]
@@ -56,7 +72,7 @@ def add_result(source, title, link, date="-"):
         })
 
 # ---------------------------------------------------------
-# 기존 사이트 (1~9)
+# 기존 및 추가 사이트 스크래퍼 함수 (1~23)
 # ---------------------------------------------------------
 def scrape_linkareer():
     try:
@@ -94,7 +110,7 @@ def scrape_jasoseol():
 def scrape_incruit():
     try:
         count = 0
-        for kw in ['인턴', '품질', '채용']:
+        for kw in ['인턴', '품질', '채용', '현대', '조선']:
             url = f"https://search.incruit.com/list/search.asp?kw={kw}"
             res = requests.get(url, headers=HEADERS, timeout=10)
             if res.status_code == 200:
@@ -214,11 +230,6 @@ def scrape_jobplanet():
     except Exception as e:
         print(f"❌ 잡플래닛 수집 실패: {e}")
 
-# ---------------------------------------------------------
-# 새로 추가된 사이트 (10~23)
-# ---------------------------------------------------------
-
-# 10. 미래내일일경험 (고용노동부)
 def scrape_yw_work24():
     try:
         url = "https://yw.work24.go.kr/main.do"
@@ -237,7 +248,6 @@ def scrape_yw_work24():
     except Exception as e:
         print(f"❌ 미래내일일경험 수집 실패: {e}")
 
-# 11. 현대자동차 Here we go
 def scrape_hyundai_hwgo():
     try:
         url = "https://hwgo.applyin.co.kr/"
@@ -254,7 +264,6 @@ def scrape_hyundai_hwgo():
     except Exception as e:
         print(f"❌ 현대차 HereWeGo 수집 실패: {e}")
 
-# 12. 현대자동차 H-mobility Class
 def scrape_hmobility():
     try:
         url = "https://h-mobility-class.com/"
@@ -271,10 +280,8 @@ def scrape_hmobility():
     except Exception as e:
         print(f"❌ 현대차 H-mobility 수집 실패: {e}")
 
-# 13. 한국해양대학교 OCEAN-CTS 공지 & 현장실습
 def scrape_kmou_cts():
     try:
-        # CTS 현장실습 게시판
         url = "https://cts.kmou.ac.kr/ko/jobs/snotice"
         res = requests.get(url, headers=HEADERS, timeout=10, verify=False)
         count = 0
@@ -294,7 +301,6 @@ def scrape_kmou_cts():
     except Exception as e:
         print(f"❌ OCEAN-CTS 현장실습 수집 실패: {e}")
 
-# 14. 한국해양대학교 대표 공지사항
 def scrape_kmou_main():
     try:
         url = "https://www.kmou.ac.kr/kmou/na/ntt/selectNttList.do?mi=2032&bbsId=10373"
@@ -316,7 +322,6 @@ def scrape_kmou_main():
     except Exception as e:
         print(f"❌ 한국해양대 공지사항 수집 실패: {e}")
 
-# 15. 한국자동차공학회 (KSAE)
 def scrape_ksae():
     try:
         url = "https://www.ksae.org/index.php"
@@ -335,7 +340,6 @@ def scrape_ksae():
     except Exception as e:
         print(f"❌ 한국자동차공학회 수집 실패: {e}")
 
-# 16. 한국해양공학회 (KSOE)
 def scrape_ksoe():
     try:
         url = "http://www.ksoe.or.kr/"
@@ -354,7 +358,6 @@ def scrape_ksoe():
     except Exception as e:
         print(f"❌ 한국해양공학회 수집 실패: {e}")
 
-# 17. 고용24 & K-뉴딜 아카데미
 def scrape_work24():
     try:
         url = "https://moelyouth.work24.go.kr/"
@@ -372,7 +375,6 @@ def scrape_work24():
     except Exception as e:
         print(f"❌ 고용24/K-뉴딜 수집 실패: {e}")
 
-# 18. 대한상공회의소 K-디지털
 def scrape_korcham_knda():
     try:
         url = "https://knda.korchamhrd.net/"
@@ -390,7 +392,6 @@ def scrape_korcham_knda():
     except Exception as e:
         print(f"❌ 대한상의 K-디지털 수집 실패: {e}")
 
-# 19. 부산인력개발원
 def scrape_ps_korcham():
     try:
         url = "https://ps.korchamhrd.net/"
@@ -408,7 +409,6 @@ def scrape_ps_korcham():
     except Exception as e:
         print(f"❌ 부산인력개발원 수집 실패: {e}")
 
-# 20. 윈스펙 (Winspec)
 def scrape_winspec():
     try:
         url = "https://winspec.co.kr/"
@@ -426,7 +426,6 @@ def scrape_winspec():
     except Exception as e:
         print(f"❌ 윈스펙 수집 실패: {e}")
 
-# 21. 코멘토 (Comento)
 def scrape_comento():
     try:
         url = "https://comento.kr/job-questions"
@@ -444,7 +443,6 @@ def scrape_comento():
     except Exception as e:
         print(f"❌ 코멘토 수집 실패: {e}")
 
-# 22. 코드잇 스프린트
 def scrape_codeit_sprint():
     try:
         url = "https://sprint.codeit.kr/"
@@ -461,6 +459,40 @@ def scrape_codeit_sprint():
         print(f"✅ 코드잇스프린트 수집 완료 (항목 수: {count})")
     except Exception as e:
         print(f"❌ 코드잇스프린트 수집 실패: {e}")
+
+def scrape_jobkorea():
+    try:
+        count = 0
+        search_keywords = ['품질', '생산관리', '부품구매', '현대모비스', 'HD현대']
+        
+        for kw in search_keywords:
+            url = f"https://www.jobkorea.co.kr/Search/?stk={kw}"
+            headers = HEADERS.copy()
+            headers['Referer'] = 'https://www.jobkorea.co.kr/'
+            
+            res = requests.get(url, headers=headers, timeout=10)
+            if res.status_code == 200:
+                soup = BeautifulSoup(res.text, 'html.parser')
+                items = soup.select('article.list-item') or soup.select('li.list-post') or soup.select('.post-list-corp li')
+                
+                for item in items:
+                    title_tag = item.select_one('a.title') or item.select_one('a.post-list-info') or item.select_one('.tit a')
+                    corp_tag = item.select_one('a.name') or item.select_one('.corp-name a') or item.select_one('.coTit a')
+                    
+                    if title_tag:
+                        title = title_tag.text.strip()
+                        corp = corp_tag.text.strip() if corp_tag else ""
+                        full_title = f"[{corp}] {title}" if corp else title
+                        
+                        href = title_tag.get('href', '')
+                        if href:
+                            link = "https://www.jobkorea.co.kr" + href if href.startswith('/') else href
+                            add_result('잡코리아', full_title, link)
+                            count += 1
+                            
+        print(f"✅ 잡코리아 수집 완료 (항목 수: {count})")
+    except Exception as e:
+        print(f"❌ 잡코리아 수집 실패: {e}")
 
 
 # ---------------------------------------------------------
@@ -510,6 +542,7 @@ if __name__ == "__main__":
     scrape_ssgsag()
     scrape_campuspick()
     scrape_jobplanet()
+    scrape_jobkorea()
 
     # 2차 추가 사이트 (대학, 현대차, 공학회, 지원사업)
     scrape_yw_work24()
