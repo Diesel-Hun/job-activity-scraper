@@ -8,12 +8,9 @@
 미래내일일경험,우수사례 공모전,javascript:fn_header_menuMove('MXH0000142');,-
 미래내일일경험,일경험 프로그램 더보기 바로가기,#btn-more-prgm,-
 미래내일일경험,주관기관별 일경험 더보기 바로가기,#btn-more-biz,-
-미래내일일경험,2026년 제주국제자유도시개발센터 체험형 청년인턴(하반기) 만 15~34세 미취업 청년 바로가기,javascript:fn_bizDetail('236'),-
-미래내일일경험,2026년 국토안전관리원 체험형 청년인턴 만 18~34세 미취업 청년 바로가기,javascript:fn_bizDetail('228'),-
-미래내일일경험,2026년 대전광역시 유성구청 유성형 공공일자리사업(청년 디지털 행정인턴) 18세~39세 유성구 거주 미취업 청년 바로가기,javascript:fn_bizDetail('193'),-
-미래내일일경험,2026년 경상남도청 경남 청년 일경험(인턴) 지원사업 도내 거주 18~39세 미취업 청년 바로가기,javascript:fn_bizDetail('183'),-
-미래내일일경험,2026년 기후에너지환경부(국립생물자원관) 국립생물자원관 대학생 현장실습(하반기) 생물다양성 관련 전공 대학생(3~4학년) 바로가기,javascript:fn_bizDetail('203'),-
-미래내일일경험,2026년 국립해양생물자원관 체험형 청년인턴 15~34세 미취업 청년 바로가기,javascript:fn_bizDetail('254'),-
+미래내일일경험,2026년 한국수목원정원관리원 체험형 청년인턴 만18~34세 바로가기,javascript:fn_bizDetail('222'),-
+미래내일일경험,2026년 한국산림복지진흥원 2026년 체험형 청년인턴 34세 이하 미취업 청년 바로가기,javascript:fn_bizDetail('220'),-
+미래내일일경험,2026년 부산항만공사 체험형 청년인턴(가점부여형) 채용(상반기) 15~34세 미취업 청년 바로가기,javascript:fn_bizDetail('250'),-
 미래내일일경험,2026년 부산항만공사 체험형 청년인턴(가점부여형) 채용(하반기) 15~34세 미취업 청년 바로가기,javascript:fn_bizDetail('251'),-
 미래내일일경험,주관기관별 일경험 정보더보기,https://yw.work24.go.kr/c/b/selectWkexBizList.do,-
 미래내일일경험,소상공인시장진흥공단 기타 인문 및 사회과학 연구개발업,javascript:void(0);,-
@@ -74,9 +71,6 @@
 고용24/청년,청년도약 인재양성 부트캠프 바로가기,http://www.nais.or.kr,-
 고용24/청년,콘텐츠 분야 우수인재 연계 기업인턴십 바로가기,https://www.kocca.kr/kocca/bbs/view/B0000137/2011882.do?menuNo=204802&categorys=0,-
 고용24/청년,미래내일 일경험 바로가기,https://yw.work24.go.kr/main.do,-
-부산인력개발원,산재근로자과정/청년일경험사업,"javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5549&cms_id=injured_worker','5427','5427','_self');",-
-부산인력개발원,청년일경험(ESG),"javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5551&cms_id=work_experience','5427','5429','_self');",-
-부산인력개발원,부산 [입찰공지] (재공고) 훈련장비(자율이동로봇) 구매 2025-07-17,"javascript:funcGoBbsDetail('21','224019','21','rootMenuId=3166&menuId=3167');",-
 코멘토,직무부트캠프,https://comento.kr/edu,-
 코드잇스프린트,"30대 개발자 신입 취업, 현실적으로 가능할까요?개발자 취업, 궁금한 건 무엇이든 물어보세요. 코드잇 백엔드 개발자 Danny가 답해드립니다!",https://sprint.codeit.kr/blog/human-account-30s-developer-job-possibility,-
 코드잇스프린트,"신입 백엔드 취업에 대한 논쟁들, 진짜일까 소문일까?신입 백엔드 개발자 취업, 뭐가 가장 중요할까? 코드잇 테크리드 태순, 백엔드 개발자 대니, 교육PM 루시가 신입 개발자 취업의 진짜 기준을 솔직하게 토론합니다.",https://sprint.codeit.kr/blog/new-backend-developer-employment-debates,-
