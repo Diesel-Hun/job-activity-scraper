@@ -1,4 +1,4 @@
-# 📢 오늘의 맞춤 관심 공고 (2026년 09월 03일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 09월 04일)
 
 | 출처 | 제목 | 링크 | 마감/등록일 |
 | :--- | :--- | :--- | :--- |
@@ -11,8 +11,13 @@
 | 미래내일일경험 | 우수사례 공모전 | [바로가기](javascript:fn_header_menuMove('MXH0000142');) | - |
 | 미래내일일경험 | 일경험 프로그램 더보기 바로가기 | [바로가기](#btn-more-prgm) | - |
 | 미래내일일경험 | 주관기관별 일경험 더보기 바로가기 | [바로가기](#btn-more-biz) | - |
-| 미래내일일경험 | 2026년 한국철도공사 체험형 인턴 청년을 포함한 일경험 기회가 필요한 구직자 바로가기 | [바로가기](javascript:fn_bizDetail('229')) | - |
-| 미래내일일경험 | 2026년 경상북도청 청년해외인턴지원사업 대구경북 소재 대학교 재학, 휴학 졸업생(1년 이내) 및 고졸 이상 30세 미만 바로가기 | [바로가기](javascript:fn_bizDetail('267')) | - |
+| 미래내일일경험 | 2026년 부산항만공사 체험형 청년인턴(가점부여형) 채용(상반기) 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('250')) | - |
+| 미래내일일경험 | 2026년 코레일네트웍스 체험형 청년인턴 만 34세 미만 청년 (군필자 만 37세 미만) 바로가기 | [바로가기](javascript:fn_bizDetail('233')) | - |
+| 미래내일일경험 | 2026년 문화체육관광부 콘텐츠 분야 우수인재 연계 기업인턴십 한국콘텐츠진흥원 인재양성 프로그램 바로가기 | [바로가기](javascript:fn_bizDetail('276')) | - |
+| 미래내일일경험 | 2026년 재단법인 충청북도기업진흥원 일경험지원사업(청년취업역량강화 교육 사업) 만19~39세 이하 청년 바로가기 | [바로가기](javascript:fn_bizDetail('185')) | - |
+| 미래내일일경험 | 2026년 한국수목원정원관리원 체험형 청년인턴 만18~34세 바로가기 | [바로가기](javascript:fn_bizDetail('222')) | - |
+| 미래내일일경험 | 2026년 문화체육관광부 무대기술인턴십 무대기술 분야 입직 희망자(만19세 이상~만39세 이하) 바로가기 | [바로가기](javascript:fn_bizDetail('272')) | - |
+| 미래내일일경험 | 2026년 한국지식재산연구원 2026년 한국지식재산연구원 청년인턴 사업 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('207')) | - |
 | 미래내일일경험 | 주관기관별 일경험 정보더보기 | [바로가기](https://yw.work24.go.kr/c/b/selectWkexBizList.do) | - |
 | 미래내일일경험 | 소상공인시장진흥공단 기타 인문 및 사회과학 연구개발업 | [바로가기](javascript:void(0);) | - |
 | 미래내일일경험 | （주）한국인삼공사 건강기능식품 제조업 | [바로가기](javascript:void(0);) | - |
@@ -41,14 +46,12 @@
 | 한국해양공학회 | [관련소식] [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
 | 한국해양공학회 | [학회소식] 2026년 해양공학 CAE 경진대회 본선 진출팀 및 본선 경연 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=950) | - |
 | 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 7월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=644) | - |
-| 한국해양공학회 | [관련소식] [안내] 2026년도 제2회 해양수산 과학기술 혁신포럼 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=643) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 4호(2026년 8월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=951) | - |
 | 한국해양공학회 | 2026년 해양공학 CAE 경진대회 본선 진출팀 및 본선 경연 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=950) | - |
 | 한국해양공학회 | 2026년도 한국해양공학회상 수상후보자 추천 요청 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=946) | - |
 | 한국해양공학회 | 2026년도 한국해양공학회 추계학술대회 및 정기총회 안내 [2026.08.24] | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=945) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 3호(2026년 6월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=944) | - |
 | 한국해양공학회 | 한국해양공학회 제6기 학생기자단 최종 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=943) | - |
-| 한국해양공학회 | '소형모듈원자로(SMR) 선박 개발’지지 원자력-조선·해양 관련 학회 공동 선언 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=942) | - |
 | 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 8월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=647) | - |
 | 한국해양공학회 | [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
 | 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 7월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=644) | - |
@@ -56,7 +59,6 @@
 | 한국해양공학회 | [채용] 한국해양조사협회 직원채용 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=642) | - |
 | 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 6월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=640) | - |
 | 한국해양공학회 | [행사] 제7회 인천국제해양포럼 개최 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=639) | - |
-| 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 5월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=638) | - |
 | 한국해양공학회 | <부고> 선박해양플랜트연구소 전봉환 박사 모친상 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=170) | - |
 | 한국해양공학회 | 황재혁 부산조선해양기자재공업협동조합 전무이사 승진 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=169) | - |
 | 한국해양공학회 | [결혼] 조선대학교 권영섭 명예교수 자제 결혼 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=167) | - |
