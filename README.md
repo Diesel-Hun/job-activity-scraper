@@ -1,4 +1,4 @@
-# 📢 오늘의 맞춤 관심 공고 (2026년 09월 04일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 09월 05일)
 
 | 출처 | 제목 | 링크 | 마감/등록일 |
 | :--- | :--- | :--- | :--- |
@@ -11,13 +11,10 @@
 | 미래내일일경험 | 우수사례 공모전 | [바로가기](javascript:fn_header_menuMove('MXH0000142');) | - |
 | 미래내일일경험 | 일경험 프로그램 더보기 바로가기 | [바로가기](#btn-more-prgm) | - |
 | 미래내일일경험 | 주관기관별 일경험 더보기 바로가기 | [바로가기](#btn-more-biz) | - |
-| 미래내일일경험 | 2026년 부산항만공사 체험형 청년인턴(가점부여형) 채용(상반기) 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('250')) | - |
-| 미래내일일경험 | 2026년 코레일네트웍스 체험형 청년인턴 만 34세 미만 청년 (군필자 만 37세 미만) 바로가기 | [바로가기](javascript:fn_bizDetail('233')) | - |
-| 미래내일일경험 | 2026년 문화체육관광부 콘텐츠 분야 우수인재 연계 기업인턴십 한국콘텐츠진흥원 인재양성 프로그램 바로가기 | [바로가기](javascript:fn_bizDetail('276')) | - |
-| 미래내일일경험 | 2026년 재단법인 충청북도기업진흥원 일경험지원사업(청년취업역량강화 교육 사업) 만19~39세 이하 청년 바로가기 | [바로가기](javascript:fn_bizDetail('185')) | - |
-| 미래내일일경험 | 2026년 한국수목원정원관리원 체험형 청년인턴 만18~34세 바로가기 | [바로가기](javascript:fn_bizDetail('222')) | - |
-| 미래내일일경험 | 2026년 문화체육관광부 무대기술인턴십 무대기술 분야 입직 희망자(만19세 이상~만39세 이하) 바로가기 | [바로가기](javascript:fn_bizDetail('272')) | - |
-| 미래내일일경험 | 2026년 한국지식재산연구원 2026년 한국지식재산연구원 청년인턴 사업 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('207')) | - |
+| 미래내일일경험 | 2026년 원자력안전위원회 청년인턴 운영 청년기본법 상 청년(19~34세) 바로가기 | [바로가기](javascript:fn_bizDetail('241')) | - |
+| 미래내일일경험 | 2026년 문화체육관광부 프로스포츠 인턴십 프로그램 프로스포츠 산업에 관심있는 청년 누구나 바로가기 | [바로가기](javascript:fn_bizDetail('277')) | - |
+| 미래내일일경험 | 2026년 문화체육관광부 공공디자인 전문인력 양성 신규 청년인턴 채용을 희망하는 기관·기업 바로가기 | [바로가기](javascript:fn_bizDetail('278')) | - |
+| 미래내일일경험 | 2026년 대전교통공사 청년 체험형 인턴 15~34세 미취업 청년 바로가기 | [바로가기](javascript:fn_bizDetail('192')) | - |
 | 미래내일일경험 | 주관기관별 일경험 정보더보기 | [바로가기](https://yw.work24.go.kr/c/b/selectWkexBizList.do) | - |
 | 미래내일일경험 | 소상공인시장진흥공단 기타 인문 및 사회과학 연구개발업 | [바로가기](javascript:void(0);) | - |
 | 미래내일일경험 | （주）한국인삼공사 건강기능식품 제조업 | [바로가기](javascript:void(0);) | - |
@@ -41,17 +38,17 @@
 | 미래내일일경험 | (인턴형/프로젝트형) 일경험 참여하기 전에 이수해야 하는 교육이 있나요? 2026-05-28 | [바로가기](javascript:fn_searchFaqDetail('150')) | - |
 | 현대차 H-mobility | 현대자동차 채용홈페이지 | [바로가기](https://h-mobility-class.com/) | - |
 | 한국해양공학회 | 한국해양공학회지 | [바로가기](http://www.ksoe.or.kr//theme/ksoe/html/ksoe_publication.php) | - |
+| 한국해양공학회 | [학회소식] 2026년도 해양공학 CAE 경진대회 수상팀 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=953) | - |
 | 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 8월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=647) | - |
 | 한국해양공학회 | [학회소식] 한국해양공학회지 40권 4호(2026년 8월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=951) | - |
 | 한국해양공학회 | [관련소식] [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
 | 한국해양공학회 | [학회소식] 2026년 해양공학 CAE 경진대회 본선 진출팀 및 본선 경연 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=950) | - |
-| 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 7월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=644) | - |
+| 한국해양공학회 | 2026년도 해양공학 CAE 경진대회 수상팀 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=953) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 4호(2026년 8월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=951) | - |
 | 한국해양공학회 | 2026년 해양공학 CAE 경진대회 본선 진출팀 및 본선 경연 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=950) | - |
 | 한국해양공학회 | 2026년도 한국해양공학회상 수상후보자 추천 요청 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=946) | - |
 | 한국해양공학회 | 2026년도 한국해양공학회 추계학술대회 및 정기총회 안내 [2026.08.24] | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=945) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 3호(2026년 6월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=944) | - |
-| 한국해양공학회 | 한국해양공학회 제6기 학생기자단 최종 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=943) | - |
 | 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 8월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=647) | - |
 | 한국해양공학회 | [행사] 2026 조선해양 국제컨퍼런스 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=645) | - |
 | 한국해양공학회 | [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 7월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=644) | - |
