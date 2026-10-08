@@ -1,4 +1,4 @@
-# 📢 오늘의 맞춤 관심 공고 (2026년 10월 07일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 10월 08일)
 
 | 출처 | 제목 | 링크 | 마감/등록일 |
 | :--- | :--- | :--- | :--- |
@@ -7,11 +7,11 @@
 | 한국해양공학회 | [관련소식] [채용] 2026년 서울대학교 조선해양공학과 교수 채용 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=651) | - |
 | 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 9월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=650) | - |
 | 한국해양공학회 | [관련소식] 2026년도 제3회 해양수산 과학기술 혁신포럼 개최 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=649) | - |
-| 한국해양공학회 | [학회소식] 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 전체일정표 (v.9) | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=954) | - |
+| 한국해양공학회 | [학회소식] 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 전체일정표 (v.9) + 프로그램북 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=954) | - |
 | 한국해양공학회 | [학회소식] 2026년도 해양공학 CAE 경진대회 수상팀 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=953) | - |
 | 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 8월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=647) | - |
 | 한국해양공학회 | [학회소식] 한국해양공학회지 40권 4호(2026년 8월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=951) | - |
-| 한국해양공학회 | 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 전체일정표 (v.9) | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=954) | - |
+| 한국해양공학회 | 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 전체일정표 (v.9) + 프로그램북 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=954) | - |
 | 한국해양공학회 | 2026년도 해양공학 CAE 경진대회 수상팀 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=953) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 4호(2026년 8월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=951) | - |
 | 한국해양공학회 | 2026년 해양공학 CAE 경진대회 본선 진출팀 및 본선 경연 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=950) | - |
