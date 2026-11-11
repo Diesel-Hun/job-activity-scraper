@@ -1,4 +1,4 @@
-# 📢 오늘의 맞춤 관심 공고 (2026년 11월 10일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 11월 11일)
 
 | 출처 | 제목 | 링크 | 마감/등록일 |
 | :--- | :--- | :--- | :--- |
@@ -40,7 +40,6 @@
 | 고용24/청년 | 미래내일 일경험 바로가기 | [바로가기](https://yw.work24.go.kr/main.do) | - |
 | 부산인력개발원 | 산재근로자과정/청년일경험사업 | [바로가기](javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5549&cms_id=injured_worker','5427','5427','_self');) | - |
 | 부산인력개발원 | 청년일경험(ESG) | [바로가기](javascript:funcMenuCall('/cms/contents.do?rootMenuId=5427&menuId=5551&cms_id=work_experience','5427','5429','_self');) | - |
-| 부산인력개발원 | 부산 [입찰공지] (재공고) 훈련장비(자율이동로봇) 구매 2025-07-17 | [바로가기](javascript:funcGoBbsDetail('21','224019','21','rootMenuId=3166&menuId=3167');) | - |
 | 코멘토 | 직무부트캠프 | [바로가기](https://comento.kr/edu) | - |
 | 코드잇스프린트 | 30대 개발자 신입 취업, 현실적으로 가능할까요?개발자 취업, 궁금한 건 무엇이든 물어보세요. 코드잇 백엔드 개발자 Danny가 답해드립니다! | [바로가기](https://sprint.codeit.kr/blog/human-account-30s-developer-job-possibility) | - |
 | 코드잇스프린트 | 신입 백엔드 취업에 대한 논쟁들, 진짜일까 소문일까?신입 백엔드 개발자 취업, 뭐가 가장 중요할까? 코드잇 테크리드 태순, 백엔드 개발자 대니, 교육PM 루시가 신입 개발자 취업의 진짜 기준을 솔직하게 토론합니다. | [바로가기](https://sprint.codeit.kr/blog/new-backend-developer-employment-debates) | - |
