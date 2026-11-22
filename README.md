@@ -1,4 +1,4 @@
-# 📢 오늘의 맞춤 관심 공고 (2026년 11월 21일)
+# 📢 오늘의 맞춤 관심 공고 (2026년 11월 22일)
 
 | 출처 | 제목 | 링크 | 마감/등록일 |
 | :--- | :--- | :--- | :--- |
@@ -9,7 +9,6 @@
 | 한국해양공학회 | [학회소식] 한국해양공학회지 40권 5호(2026년 10월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=955) | - |
 | 한국해양공학회 | [관련소식] [채용] 2026년 서울대학교 조선해양공학과 교수 채용 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=651) | - |
 | 한국해양공학회 | [관련소식] [자료] 선박해양플랜트연구소(KEC) 발간 "첨단 해양모빌리티 동향 정보지(2026년 9월호)" | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=650) | - |
-| 한국해양공학회 | [관련소식] 2026년도 제3회 해양수산 과학기술 혁신포럼 개최 안내 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice01&wr_id=649) | - |
 | 한국해양공학회 | 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 우수논문발표상(정회원, 학생회원) 수상자 발표 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=956) | - |
 | 한국해양공학회 | 한국해양공학회지 40권 5호(2026년 10월) 발행 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=955) | - |
 | 한국해양공학회 | 한국해양공학회 창립 40주년 기념 2026년도 추계학술대회 전체일정표 (v.9) + 프로그램북 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=notice&wr_id=954) | - |
@@ -24,7 +23,6 @@
 | 한국해양공학회 | <부고> 선박해양플랜트연구소 전봉환 박사 모친상 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=170) | - |
 | 한국해양공학회 | 황재혁 부산조선해양기자재공업협동조합 전무이사 승진 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=169) | - |
 | 한국해양공학회 | [결혼] 조선대학교 권영섭 명예교수 자제 결혼 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=167) | - |
-| 한국해양공학회 | <부고> 국립목포해양대학교 오대균 교수 부친상 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=free&wr_id=165) | - |
 | 한국해양공학회 | [규정] 한국해양공학회 규정집(2025.10.30.) | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=data&wr_id=38) | - |
 | 한국해양공학회 | [서식] 2026년도 한국해양공학회장상 추천서식 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=data&wr_id=34) | - |
 | 한국해양공학회 | [메뉴얼] 한국해양공학회지 투고심사사이트 사용자 메뉴얼 | [바로가기](http://www.ksoe.or.kr/bbs/board.php?bo_table=data&wr_id=24) | - |
